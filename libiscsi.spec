@@ -78,7 +78,8 @@ wszystkich celów oraz urządzeń.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--disable-werror
 %{__make}
 
 %install
