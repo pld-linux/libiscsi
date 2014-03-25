@@ -9,6 +9,9 @@ Group:		Libraries
 Source0:	https://github.com/sahlberg/libiscsi/archive/%{version}.tar.gz?/%{name}-%{version}.tar.gz
 # Source0-md5:	650266b18b2516d32a5a0aa8027e06d3
 URL:		https://github.com/sahlberg/libiscsi
+BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake
+BuildRequires:	libtool >= 2:2
 BuildRequires:	popt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
