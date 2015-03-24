@@ -2,7 +2,7 @@ Summary:	Clientside library to implement the iSCSI protocol
 Summary(pl.UTF-8):	Biblioteka kliencka implementująca protokół iSCSI
 Name:		libiscsi
 Version:	1.10.0
-Release:	2
+Release:	3
 License:	LGPL v2.1+ (library), GPL v2+ (tools)
 Group:		Libraries
 #Source0Download: https://github.com/sahlberg/libiscsi/downloads
