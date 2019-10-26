@@ -19,6 +19,9 @@ BuildRequires:	libtool >= 2:2
 BuildRequires:	popt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+# libiscsi conflicts with libiscsi from open-iscsi
+%define		pkglibdir	%{_libdir}/iscsi
+
 %description
 Libiscsi is a clientside library to implement the iSCSI protocol that
 can be used to access resource of an iSCSI Target.
@@ -87,6 +90,7 @@ wszystkich celów oraz urządzeń.
 %{__autoheader}
 %{__automake}
 %configure \
+	--libdir=%{pkglibdir} \
 	--disable-werror
 %{__make}
 
@@ -94,9 +98,10 @@ wszystkich celów oraz urządzeń.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	pkgconfigdir=%{_pkgconfigdir}
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libiscsi.la
+%{__rm} $RPM_BUILD_ROOT%{pkglibdir}/libiscsi.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -108,18 +113,19 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 # COPYING specifies some details, doesn't contain LGPL/GPL text
 %doc COPYING README TODO
-%attr(755,root,root) %{_libdir}/libiscsi.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libiscsi.so.9
+%dir %{pkglibdir}
+%attr(755,root,root) %{pkglibdir}/libiscsi.so.*.*.*
+%attr(755,root,root) %{pkglibdir}/libiscsi.so.9
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libiscsi.so
+%attr(755,root,root) %{pkglibdir}/libiscsi.so
 %{_includedir}/iscsi
 %{_pkgconfigdir}/libiscsi.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libiscsi.a
+%{pkglibdir}/libiscsi.a
 
 %files tools
 %defattr(644,root,root,755)
