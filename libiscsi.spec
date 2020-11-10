@@ -87,6 +87,7 @@ wszystkich celów oraz urządzeń.
 %{__autoheader}
 %{__automake}
 %configure \
+	CFLAGS="%{rpmcflags} -fcommon" \
 	--disable-werror
 %{__make}
 
