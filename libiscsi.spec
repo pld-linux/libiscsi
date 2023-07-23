@@ -12,6 +12,7 @@ Patch0:		%{name}-link.patch
 URL:		https://github.com/sahlberg/libiscsi
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
+BuildRequires:	CUnit
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libibverbs-devel
 BuildRequires:	librdmacm-devel
@@ -88,6 +89,8 @@ wszystkich celów oraz urządzeń.
 %{__automake}
 %configure \
 	CFLAGS="%{rpmcflags} -fcommon" \
+	--enable-man-pages \
+	--enable-test-tool \
 	--disable-werror
 %{__make}
 
