@@ -1,18 +1,17 @@
 Summary:	Clientside library to implement the iSCSI protocol
 Summary(pl.UTF-8):	Biblioteka kliencka implementująca protokół iSCSI
 Name:		libiscsi
-Version:	1.19.0
+Version:	1.20.0
 Release:	1
 License:	LGPL v2.1+ (library), GPL v2+ (tools)
 Group:		Libraries
 #Source0Download: https://github.com/sahlberg/libiscsi/releases
 Source0:	https://github.com/sahlberg/libiscsi/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	fe0c0c7b677f3b6fbe535e758838ccf2
-Patch0:		%{name}-link.patch
+# Source0-md5:	ed7a9f04d2cb0a5b9856ac3df62df1fc
 URL:		https://github.com/sahlberg/libiscsi
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
 BuildRequires:	CUnit
+BuildRequires:	autoconf >= 2.69
+BuildRequires:	automake
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libibverbs-devel
 BuildRequires:	librdmacm-devel
@@ -79,7 +78,6 @@ wszystkich celów oraz urządzeń.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -88,8 +86,7 @@ wszystkich celów oraz urządzeń.
 %{__autoheader}
 %{__automake}
 %configure \
-	CFLAGS="%{rpmcflags} -fcommon" \
-	--enable-man-pages \
+	--enable-manpages \
 	--enable-test-tool \
 	--disable-werror
 %{__make}
@@ -111,9 +108,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 # COPYING specifies some details, doesn't contain LGPL/GPL text
-%doc COPYING README TODO
+%doc COPYING README.md TODO
 %attr(755,root,root) %{_libdir}/libiscsi.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libiscsi.so.9
+%attr(755,root,root) %ghost %{_libdir}/libiscsi.so.10
 
 %files devel
 %defattr(644,root,root,755)
@@ -127,14 +124,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files tools
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/iscsi-discard
 %attr(755,root,root) %{_bindir}/iscsi-inq
 %attr(755,root,root) %{_bindir}/iscsi-ls
+%attr(755,root,root) %{_bindir}/iscsi-md5sum
 %attr(755,root,root) %{_bindir}/iscsi-perf
+%attr(755,root,root) %{_bindir}/iscsi-pr
 %attr(755,root,root) %{_bindir}/iscsi-readcapacity16
 %attr(755,root,root) %{_bindir}/iscsi-swp
 %attr(755,root,root) %{_bindir}/iscsi-test-cu
-%attr(755,root,root) %{_bindir}/ld_iscsi.so
 %{_mandir}/man1/iscsi-inq.1*
 %{_mandir}/man1/iscsi-ls.1*
+%{_mandir}/man1/iscsi-md5sum.1*
 %{_mandir}/man1/iscsi-swp.1*
 %{_mandir}/man1/iscsi-test-cu.1*
