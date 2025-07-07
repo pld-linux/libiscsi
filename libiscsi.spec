@@ -1,13 +1,13 @@
 Summary:	Clientside library to implement the iSCSI protocol
 Summary(pl.UTF-8):	Biblioteka kliencka implementująca protokół iSCSI
 Name:		libiscsi
-Version:	1.20.0
+Version:	1.20.2
 Release:	1
 License:	LGPL v2.1+ (library), GPL v2+ (tools)
 Group:		Libraries
-#Source0Download: https://github.com/sahlberg/libiscsi/releases
+#Source0Download: https://github.com/sahlberg/libiscsi/tags
 Source0:	https://github.com/sahlberg/libiscsi/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	ed7a9f04d2cb0a5b9856ac3df62df1fc
+# Source0-md5:	a046ba4e327591f5d0f4853f7f761efc
 URL:		https://github.com/sahlberg/libiscsi
 BuildRequires:	CUnit
 BuildRequires:	autoconf >= 2.69
@@ -110,7 +110,7 @@ rm -rf $RPM_BUILD_ROOT
 # COPYING specifies some details, doesn't contain LGPL/GPL text
 %doc COPYING README.md TODO
 %attr(755,root,root) %{_libdir}/libiscsi.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libiscsi.so.10
+%attr(755,root,root) %ghost %{_libdir}/libiscsi.so.11
 
 %files devel
 %defattr(644,root,root,755)
