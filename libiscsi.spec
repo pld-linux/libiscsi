@@ -1,13 +1,13 @@
 Summary:	Clientside library to implement the iSCSI protocol
 Summary(pl.UTF-8):	Biblioteka kliencka implementująca protokół iSCSI
 Name:		libiscsi
-Version:	1.20.2
+Version:	1.20.3
 Release:	1
 License:	LGPL v2.1+ (library), GPL v2+ (tools)
 Group:		Libraries
 #Source0Download: https://github.com/sahlberg/libiscsi/tags
 Source0:	https://github.com/sahlberg/libiscsi/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	a046ba4e327591f5d0f4853f7f761efc
+# Source0-md5:	b158393cb41ec8bb1b5a8da1b384199f
 URL:		https://github.com/sahlberg/libiscsi
 BuildRequires:	CUnit
 BuildRequires:	autoconf >= 2.69
@@ -109,12 +109,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 # COPYING specifies some details, doesn't contain LGPL/GPL text
 %doc COPYING README.md TODO
-%attr(755,root,root) %{_libdir}/libiscsi.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libiscsi.so.11
+%{_libdir}/libiscsi.so.*.*.*
+%ghost %{_libdir}/libiscsi.so.11
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libiscsi.so
+%{_libdir}/libiscsi.so
 %{_includedir}/iscsi
 %{_pkgconfigdir}/libiscsi.pc
 
@@ -131,6 +131,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/iscsi-perf
 %attr(755,root,root) %{_bindir}/iscsi-pr
 %attr(755,root,root) %{_bindir}/iscsi-readcapacity16
+%attr(755,root,root) %{_bindir}/iscsi-rtpg
 %attr(755,root,root) %{_bindir}/iscsi-swp
 %attr(755,root,root) %{_bindir}/iscsi-test-cu
 %{_mandir}/man1/iscsi-inq.1*
